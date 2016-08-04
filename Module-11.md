@@ -9,6 +9,7 @@ It is recommended that you read through each of the official documentation resou
 
 Resources and articles:
 - [What is Docker?](https://www.docker.com/what-docker)
+- [Laravel Development with Docker](https://kyleferg.com/laravel-development-with-docker/)
 - [Official Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
 - [Official Docker Engine Docs](https://docs.docker.com/engine/understanding-docker/)
 - [Official Docker Compose Docs](https://docs.docker.com/compose/overview/)
@@ -33,8 +34,8 @@ Resources and articles:
 11. Commit your changes and push up.
 12. Attempt to run `bash` inside of the container, and paste the output into _docker-module.txt_.
 
-    > Since containers are immutable, they start in their original state everytime. Since the original 
-    state of the container doesn't have `bash` installed, running the container again restarts the container without bash. This is one of the differences between the way containers and virtual 
+    > Since containers are immutable, they start in their original state everytime. Since the original
+    state of the container doesn't have `bash` installed, running the container again restarts the container without bash. This is one of the differences between the way containers and virtual
     machines handle state.
 
 13. Commit your changes and push up.
@@ -59,7 +60,7 @@ echo 'Hello, World!'
 28. Pull down the `dockercloud/hello-world` image. You can see the _Dockerfile_ for this image [here](docker pull dockercloud/hello-world).
 29. Run the `dockercloud/hello-world` image without any arguments or flags.
 
-    > The container continues to run and never exits. If you look at the _Dockerfile_, you can see that 
+    > The container continues to run and never exits. If you look at the _Dockerfile_, you can see that
     `php-fpm` and `nginx` are running within the container. Since `nginx` is run with `-g "daemon off;"
     `, the process never exits and neither does the container!
 
