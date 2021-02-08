@@ -11,6 +11,7 @@ For this module, **create a new Git branch for your Laravel application from Mod
 The link below may provide some valuable insight.
 
 - [Designing a Secure REST (Web) API without OAuth](http://web.archive.org/web/20150908221444/http://www.thebuzzmedia.com/designing-a-secure-rest-api-without-oauth-authentication)
+- [HMAC Function In PHP - How To Create A Signature] (https://www.php.net/manual/en/function.hash-hmac.php)
 
 ***
 
@@ -25,13 +26,13 @@ The link below may provide some valuable insight.
 
 1. Create a new __resourceful__ controller, model and associated views for managing multiple api consumers. Each API consumer should at a minimum have attributes for api_key and shared_secret. You'll use these attributes later to authenticate the API client.
 
-> Most APIs require some sort of query authentication: a method of signing API requests with an API key and signature. The signature is usually generated using a shared secret. When you're consuming an API, there should be easy to follow steps to create signatures and authenticate your API requests. When you're writing your own API, you have to create both server-side signature validation and a client-side signature creation strategy.
+> Most APIs require some sort of query authentication: a method of signing API requests with an API key and signature. The signature is usually generated using a shared secret. This is usually sent over in the Authorization header. When you're consuming an API, there should be easy to follow steps to create signatures so that the API server can authenticate your API requests. When you're writing your own API, you have to create both server-side signature validation and a client-side signature creation strategy.
 
 2. Modify the API controller you created in Part 1 to to handle server-side signature validation of the API request. You'll need to integrate the API consumer records with their key and shared secret attributes that you created in the step above.
 
 ### Part 3: An API Client
 
-Create a new Git repo called `rest-client-ex`. In this repo you will create a collection of PHP code which will consume your API. Use your own judgement on how you'd like to setup this client application. You could make another Laravel app, or even plain PHP files. You be the judge.
+Create a new Git repo called `rest-client-ex`. In this repo you will create a collection of PHP code which will consume the API you've just created. Use your own judgement on how you'd like to setup this client application. You could make another Laravel app, or even plain PHP files. You be the judge.
 
 1. Create rest-client code that executes each REST endpoint of your API controller. In doing this, you'll need to handle the client-side (API/REST client) signature creation.
 
