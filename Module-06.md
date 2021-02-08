@@ -29,11 +29,11 @@ Prior to completing the module below it is highly recommended that you look at t
 	- Create a new object, populate the properties with Faker and call `save()`; assert that the record was inserted into the database.
 	- Update the object and call `save()`; assert that the data in relevant table row has been updated correctly AND that no additional records were inserted.
 	- Call the `destroy()` method on the model and assert that the record has been removed from the database table.
-8. Refactor your model's code to use dependency injection and the Repository pattern:
-	- Following the Repository pattern, add a database access object, and define an interface that specifies the methods and properties required.
-	- Refactor your model to use dependency injection and the database access object.
-	- Add a mock database access object that uses Mockery and conforms to the database access interface to return mock data.
-9. Add a new test method to your test class that injects the mock database access object. Test the `create`, `find`, `update` and `delete` functionality of your model without actually hitting the database.
+8. Refactor your code to use dependency injection and the Repository pattern:
+	- Following the Repository pattern, add a database access object (DAO), and define an interface that specifies the methods and properties required.
+	- Refactor your model to use dependency injection and the database access object (DAO).
+	- Add a mock database access object (DAO) that uses Mockery and conforms to the database access interface to return mock data.
+9. Add a new test method to your test class that injects the mock database access object (DAO). Test the `create`, `find`, `update` and `delete` functionality of your model without actually hitting the database.
 
 ***
 
