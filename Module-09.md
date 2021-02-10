@@ -24,7 +24,6 @@ In the root of your new directory for your new app create a _docker-compose.yaml
 3. A web service using the `gentux/nginx:fpm` image, exposing port 80 on port 80 locally, a [link](https://docs.docker.com/compose/compose-file/#links) to the app service with an alias of _fpm.local_, and attached to the _myapp_ network.
 4. A mysql service using `mysql:5.6`, exposing port 3306 on port 3306 locally, attached to the _myapp_ network, and using environment variables to set a root password of `secret`, a database name of `modules`, a user name of `modules`, and a user password of `secret`.
 
-
 **Application Criteria**
 
 When building your application and meeting a specific criteria below, you should use a relevant commit message to indicate that your commit is satisfying a particular criteria.  This isn't an application you'll ship, focus on fulfilling the criteria to demonstrate your understanding of the framework components.
@@ -64,6 +63,7 @@ When building your application and meeting a specific criteria below, you should
 15. Use 2+ Queues: one for sending email (in #5); and one custom queue.
 16. Use at least one query scope in your application.
 17. Implement at least one model policy
+18. Any developer should be able to git clone your app and run docker-compose up -d and have your app running on localhost:80
 
 ***
 
