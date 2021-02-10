@@ -39,8 +39,18 @@ echo 'Hello, Docker Compose!'
 9. Update the `hello-container` service to run the _welcome-docker.sh_ file and paste the output of `docker-compose up`.
 10. Commit your changes and push up.
 11. Create a new service called `data-container` that uses the `alpine:latest` image and mounts the same volumes as the `hello-container` service.
-12. Update the `hello-container` service to mount the volumes from the `data-container` service and paste the output of `docker-compose up`.
-13. Commit your changes and push up.
+12. Commit and push up. 
+
+> Note we're manually putting this file in both containers at this time. Now let's use a shared volume to accomplish the same thing. 
+
+13. Create a new Dockerfile from `alpine:latest` 
+    * On build the dockerfile should create a directory `/home/scripts` 
+    * Copy the `./scripts` directory from your machine into the newly created /home/scripts directory in the container
+14. Update the docker-compose file so that the data-container service not builds using this newly created Dockerfile
+15. Add a named volume mount called scriptsdir to docker-compose which will be used by both containers
+16. Mount the named volume in the location we copied our `./scripts` folder to. 
+17. `docker-compose up` and exec into the `hello-container` to confirm the `welcome-compose.sh` script is in `/home/scripts`
+17. Commit your changes and push up.
 
 ### Final
 
