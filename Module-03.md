@@ -39,26 +39,19 @@ echo 'Hello, Docker Compose!'
 9. Update the `hello-container` service to run the _welcome-docker.sh_ file and paste the output of `docker-compose up`.
 10. Commit your changes and push up.
 11. Create a new service called `data-container` that uses the `alpine:latest` image and mounts the same volumes as the `hello-container` service.
-12. Commit and push up. 
+12. Commit and push up.
 
-> Note we're manually putting this file in both containers at this time. Now let's use a shared volume to accomplish the same thing. 
+> Note we're manually putting this file in both containers at this time. Now let's use a shared volume to accomplish the same thing.
 
-13. Create a new Dockerfile from `alpine:latest` 
-    * On build the dockerfile should create a directory `/home/scripts` 
+13. Create a new Dockerfile from `alpine:latest`
+    * On build the dockerfile should create a directory `/home/scripts`
     * Copy the `./scripts` directory from your machine into the newly created /home/scripts directory in the container
 14. Update the docker-compose file so that the data-container service not builds using this newly created Dockerfile
 15. Add a named volume mount called scriptsdir to docker-compose which will be used by both containers
-16. Mount the named volume in the location we copied our `./scripts` folder to. 
+16. Mount the named volume in the location we copied our `./scripts` folder to.
 17. `docker-compose up` and exec into the `hello-container` to confirm the `welcome-compose.sh` script is in `/home/scripts`
 17. Commit your changes and push up.
 
-### Final
-
-Update the _docker-compose.yaml_ file to fulfill the following requirements:
-1. A network defined as _modules_.
-1. An app service using the `gentux/php:lumen-5.6-ci` image, mounting the current directory to `/var/www`, and attached to the _modules_ network.
-2. A web service using the `gentux/nginx:fpm` image, exposing port 80 on port 80 locally, a [link](https://docs.docker.com/compose/compose-file/#links) to the app service with an alias of _fpm.local_, and attached to the _modules_ network.
-3. A mysql service using `mysql:5.6`, exposing port 3306 on port 3306 locally, attached to the _modules_ network, and using environment variables to set a root password of `secret`, a database name of `modules`, a user name of `modules`, and a user password of `secret`.
 
 ---
 
