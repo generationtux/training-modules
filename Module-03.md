@@ -34,7 +34,7 @@ Resources and articles:
 #!/bin/bash
 echo 'Hello, Docker Compose!'
 ```
-7. Update the `hello-world` service in your _docker-compose.yaml_ file to use your `gentux/alpine-bash` image from module 2.
+7. Update the `hello-world` service in your _docker-compose.yaml_ file to use the `gentux/alpine-bash` image.
 8. In the _docker-compose.yaml_ file, mount the new `./scripts` directory as the `/home/scripts` directory within the `hello-container` service.
 9. Update the `hello-container` service to run the _welcome-docker.sh_ file and paste the output of `docker-compose up`.
 10. Commit your changes and push up.
