@@ -89,7 +89,15 @@ Create a new branch in your PHP Git repository called `advanced` and push your c
 2. Create a simple PHP application **that does not use an existing framework or 3rd party libraries** and has the characteristics listed below.
 3. Note that this exercise should be kept as simple as possible. **Do not develop beyond the feature requirements below.**
 
-> Before you begin building this web application, copy over the final _docker-compose.yaml_ file you created as part of Module 3. Be sure place your php entry file (e.g. index.php) under a public directory in your application. The nginx configuration is set to look for the index.php there.
+## Environment Setup For Your Application using Docker and Docker-Compose
+
+In the root of your new directory for your new app create a _docker-compose.yaml_ file to fulfill the following requirements:
+1. A network defined as _myapp_ (or whatever you want).
+2. An app service using the `gentux/php:laravel-7.x-ci` image, mounting the current directory to `/var/www`, and attached to the _myapp_ network.
+3. A web service using the `gentux/nginx:fpm` image, exposing port 80 on port 80 locally, a [link](https://docs.docker.com/compose/compose-file/#links) to the app service with an alias of _fpm.local_, and attached to the _myapp_ network.
+4. A mysql service using `mysql:5.6`, exposing port 3306 on port 3306 locally, attached to the _myapp_ network, and using environment variables to set a root password of `secret`, a database name of `modules`, a user name of `modules`, and a user password of `secret`.
+
+> Before you begin building this web application. Be sure place your php entry file (e.g. index.php) under a public directory in your application. The nginx configuration is set to look for the index.php in `/var/www/public` inside the app docker container. Mount your public directory in `/var/www/public`.
 
 #### Feature Requirements
 
