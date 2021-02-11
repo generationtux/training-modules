@@ -34,23 +34,25 @@ Resources and articles:
 #!/bin/bash
 echo 'Hello, Docker Compose!'
 ```
-7. Update the `hello-world` service in your _docker-compose.yaml_ file to use your `gentux/alpine-bash` image from module 2.
+7. Update the `hello-world` service in your _docker-compose.yaml_ file to use the `nginx:1-alpine` image. We're using this image because it will continue to run and let us be able to exec into the container later on.
 8. In the _docker-compose.yaml_ file, mount the new `./scripts` directory as the `/home/scripts` directory within the `hello-container` service.
 9. Update the `hello-container` service to run the _welcome-docker.sh_ file and paste the output of `docker-compose up`.
 10. Commit your changes and push up.
-11. Create a new service called `data-container` that uses the `alpine:latest` image and mounts the same volumes as the `hello-container` service.
+11. Create a new service called `data-container` that uses the `nginx:1-alpine` image and mounts the same volumes as the `hello-container` service.
 12. Commit and push up.
 
 > Note we're manually putting this file in both containers at this time. Now let's use a shared volume to accomplish the same thing.
 
 13. Create a new Dockerfile from `alpine:latest`
-    * On build the dockerfile should create a directory `/home/scripts`
-    * Copy the `./scripts` directory from your machine into the newly created /home/scripts directory in the container
-14. Update the docker-compose file so that the data-container service not builds using this newly created Dockerfile
+    * On build, the dockerfile should create a directory `/home/scripts`
+    * Copy the `./scripts` directory from your machine into the newly created `/home/scripts` directory in the container
+14. Update the _docker-compose.yaml_ file so that the data-container service builds using this newly created Dockerfile
 15. Add a named volume mount called scriptsdir to docker-compose which will be used by both containers
-16. Mount the named volume in the location we copied our `./scripts` folder to.
-17. `docker-compose up` and exec into the `hello-container` to confirm the `welcome-compose.sh` script is in `/home/scripts`
-17. Commit your changes and push up.
+16. Remove your previous volume mounts in both the `data-container` and `hello-container`. We are now going to use the named volume instead and will be changing these lines.
+17. Mount the named volume in the location that we copied our `./scripts` (`/home/scripts`) into. Do this in both the `data-container` and `home-container` services.
+18. The `hello-container` should "depend upon" the `data-container` service coming up first. This will ensure that the `./scripts` directory is copied first and later we'll be able to access that folder in the `hello-container` service because of the shared, named volume.
+18. `docker-compose up` and exec into the `hello-container` to confirm the `welcome-compose.sh` script is in `/home/scripts`
+19. Commit your changes and push up.
 
 
 ---
