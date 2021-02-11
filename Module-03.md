@@ -44,13 +44,15 @@ echo 'Hello, Docker Compose!'
 > Note we're manually putting this file in both containers at this time. Now let's use a shared volume to accomplish the same thing.
 
 13. Create a new Dockerfile from `alpine:latest`
-    * On build the dockerfile should create a directory `/home/scripts`
-    * Copy the `./scripts` directory from your machine into the newly created /home/scripts directory in the container
-14. Update the docker-compose file so that the data-container service not builds using this newly created Dockerfile
+    * On build, the dockerfile should create a directory `/home/scripts`
+    * Copy the `./scripts` directory from your machine into the newly created `/home/scripts` directory in the container
+14. Update the _docker-compose.yaml_ file so that the data-container service builds using this newly created Dockerfile
 15. Add a named volume mount called scriptsdir to docker-compose which will be used by both containers
-16. Mount the named volume in the location we copied our `./scripts` folder to.
-17. `docker-compose up` and exec into the `hello-container` to confirm the `welcome-compose.sh` script is in `/home/scripts`
-17. Commit your changes and push up.
+16. Remove your previous volume mounts in both the `data-container` and `hello-container`. We are now going to use the named volume instead and will be changing these lines.
+17. Mount the named volume in the location that we copied our `./scripts` (`/home/scripts`) into. Do this in both the `data-container` and `home-container` services.
+18. The `hello-container` should "depend upon" the `data-container` service coming up first. This will ensure that the `./scripts` directory is copied first and later we'll be able to access that folder in the `hello-container` service because of the shared, named volume.
+18. `docker-compose up` and exec into the `hello-container` to confirm the `welcome-compose.sh` script is in `/home/scripts`
+19. Commit your changes and push up.
 
 
 ---
