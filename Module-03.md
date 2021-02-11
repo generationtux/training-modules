@@ -34,11 +34,11 @@ Resources and articles:
 #!/bin/bash
 echo 'Hello, Docker Compose!'
 ```
-7. Update the `hello-world` service in your _docker-compose.yaml_ file to use the `gentux/alpine-bash` image.
+7. Update the `hello-world` service in your _docker-compose.yaml_ file to use the `nginx:1-alpine` image. We're using this image because it will continue to run and let us be able to exec into the container later on.
 8. In the _docker-compose.yaml_ file, mount the new `./scripts` directory as the `/home/scripts` directory within the `hello-container` service.
 9. Update the `hello-container` service to run the _welcome-docker.sh_ file and paste the output of `docker-compose up`.
 10. Commit your changes and push up.
-11. Create a new service called `data-container` that uses the `alpine:latest` image and mounts the same volumes as the `hello-container` service.
+11. Create a new service called `data-container` that uses the `nginx:1-alpine` image and mounts the same volumes as the `hello-container` service.
 12. Commit and push up.
 
 > Note we're manually putting this file in both containers at this time. Now let's use a shared volume to accomplish the same thing.
