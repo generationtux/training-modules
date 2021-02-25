@@ -62,7 +62,7 @@ When building your application and meeting a specific criteria below, you should
 14. Use pagination at least once.
 15. Use 2+ Queues: one for sending email (in #5); and one custom queue.
 16. Use at least one query scope in your application.
-17. Implement at least one model policy
+17. Implement at least one model [policy](https://laravel.com/docs/8.x/authorization#creating-policies)
 18. Any developer should be able to git clone your app and run docker-compose up -d and have your app running on localhost:80
 
 ***
