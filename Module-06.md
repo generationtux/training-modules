@@ -20,20 +20,20 @@ Prior to completing the module below it is highly recommended that you look at t
 4. Add a folder called `tests` where all your test code will go.
 5. Add a test class for your previous model.
 6. Add a method to the test class to test model validation; use Faker to set properties:
-	- Create a new object and assert that validation initially fails.
+	- Create a new instance of your model and assert that validation initially fails.
 	- Assert that an error exists for each particular property where validation is failing.
 	- One by one, set each required property correctly and assert that the error does not exist.
 	- When all required properties are set, `assert` that validation passes.
 7. Add a method that tests that the model's `save()` and `destroy()` methods are inserting, updating and deleting in the database correctly:
-	- Assert that the model's database table is empty, or note the number of records.
-	- Create a new object, populate the properties with Faker and call `save()`; assert that the record was inserted into the database.
+	- Assert that the model's database table is empty, or note the number of records. Do this before your actions to save or delete to help ensure that the data in your database is actually changing correctly.
+	- Create a new instance of your model, populate the properties with Faker and call `save()`; assert that the record was inserted into the database.
 	- Update the object and call `save()`; assert that the data in relevant table row has been updated correctly AND that no additional records were inserted.
 	- Call the `destroy()` method on the model and assert that the record has been removed from the database table.
 8. Refactor your code to use dependency injection and the Repository pattern:
-	- Following the Repository pattern, add a database access object (DAO), and define an interface that specifies the methods and properties required.
-	- Refactor your model to use dependency injection and the database access object (DAO).
-	- Add a mock database access object (DAO) that uses Mockery and conforms to the database access interface to return mock data.
-9. Add a new test method to your test class that injects the mock database access object (DAO). Test the `create`, `find`, `update` and `delete` functionality of your model without actually hitting the database.
+	- Create a Repository interface. This should require a model as a dependency and will interact with the database through the model. This should define the crud methods that you’re already using on the model.
+	- Create a Repository class that implements the Repository interface.
+	- Refactor your controller(s) to use the Repository instead of your model.
+9. Add a new test that tests your Repository. Create a mock of your model and pass it into your Repository as it’s dependency. Test the `create`, `find`, `update` and `delete` functionality of your Repository without actually hitting the database.
 
 ***
 
