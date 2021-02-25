@@ -57,7 +57,7 @@ When building your application and meeting a specific criteria below, you should
 9. CRUD interface for at least 1 model.
 10. Handle uploading an image that is a property of an entity. (Something like `$user->avatar`). Have 1+ alternative image representations created from the uploaded image (eg. thumbnail, etc.). You may consider using one or more packages to help do this.
 11. Include at least two 'resourceful' routes and controllers.
-12. Subscribe to at least one event. This can be a built-in event or a custom event you fire.
+12. Subscribe to at least one [event](https://laravel.com/docs/8.x/events). This can be a built-in event or a custom event you fire.
 13. Create at least one Facade.
 14. Use pagination at least once.
 15. Use 2+ Queues: one for sending email (in #5); and one custom queue.
